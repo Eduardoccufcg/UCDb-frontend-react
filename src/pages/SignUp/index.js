@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Link ,withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import api from "../../services/api";
 
@@ -16,25 +16,21 @@ class SignUp extends Component {
         lastName: "",
         password: ""
     };
-     handleSignUp = async e => {
+    handleSignUp = async e => {
         e.preventDefault();
-        const{email, firstName,lastName,password} = this.state;
-        if(!email || !firstName || !lastName || !password){
-            this.state({ error: "Preencha todos os dados para se cadastrar" });
-        }else{
-            try {
-                await api.post("/v1/users/",{email, firstName,lastName,password})
-                this.props.history.push("/");
-            }catch (err) {
-                console.log(err);
-                this.setState({ error: "Ocorreu um erro ao registrar sua conta. T.T" });
-            }
+        const { email, firstName, lastName, password } = this.state;
+        if (!email || !firstName || !lastName || !password) {
+            this.setState({ error: "Preencha todos os dados para se cadastrar" });
+        } else {
 
+            await api.post("/v1/users/", { email, firstName, lastName, password }).then(() => { this.props.history.push("/") })
+                .catch((error) => {
+                    this.setState({ error: error.response.data.message })
+                })
         }
+
+
     };
-
-    
-
     render() {
         return (
             <Container>
@@ -81,10 +77,6 @@ class SignUp extends Component {
 
         );
     }
-
-
-
-
 
 }
 export default withRouter(SignUp);
