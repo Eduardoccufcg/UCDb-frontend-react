@@ -23,7 +23,7 @@ class SignUp extends Component {
             this.setState({ error: "Preencha todos os dados para se cadastrar" });
         } else {
 
-            await api.post("/v1/users/", { email, firstName, lastName, password }).then(() => { this.props.history.push("/") })
+            await api.post("/api/v1/users/", { email, firstName, lastName, password }).then(() => { this.props.history.push("/") })
                 .catch((error) => {
                     this.setState({ error: error.response.data.message })
                 })

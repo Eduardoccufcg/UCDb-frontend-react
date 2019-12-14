@@ -3,8 +3,7 @@ import { getToken } from './auth'
 
 
 const api = axios.create({
-    baseURL: "http://localhost:8080/api"
-
+    baseURL: process.env.REACT_APP_API_URL || "https://ucdbapplication.herokuapp.com"
 });
 
 api.interceptors.request.use(async config => {
