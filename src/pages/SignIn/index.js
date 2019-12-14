@@ -8,78 +8,60 @@ import { Form, Container } from "./styles";
 
 import Logo from "../../assets/logo.png";
 
-class SignUp extends Component {
+class SignIn extends Component {
 
     state = {
         email: "",
-        firstName: "",
-        lastName: "",
-        password: ""
+        password: "",
+        error:""
     };
-    handleSignUp = async e => {
+
+    handleSignIn = async e => {
         e.preventDefault();
-        const { email, firstName, lastName, password } = this.state;
-        if (!email || !firstName || !lastName || !password) {
+        const { email, password } = this.state;
+        if (!email || !password) {
             this.setState({ error: "Preencha todos os dados para se cadastrar" });
         } else {
 
-            await api.post("/v1/users/", { email, firstName, lastName, password }).then(() => { this.props.history.push("/") })
+            await api.post("/v1/login/", { email, password }).then(() => { this.props.history.push("/") })
                 .catch((error) => {
                     this.setState({ error: error.response.data.message })
-                })
+            })
         }
 
 
     };
+
+
     render() {
         return (
             <Container>
-
-                <Form onSubmit={this.handleSignUp}>
+                <Form onSubmit={this.handleSignIn}>
                     <img src={Logo} alt="UCDb logo" />
                     {this.state.error && <p>{this.state.error}</p>}
                     <input
                         type="text"
-                        placeholder="Nome"
-                        onChange={e => this.setState({ firstName: e.target.value })}
-
-                    />
-                    <input
-                        type="text"
-                        placeholder="Sobrenome"
-                        onChange={e => this.setState({ lastName: e.target.value })}
-                    />
-
-                    <input
-                        type="text"
                         placeholder="Email"
                         onChange={e => this.setState({ email: e.target.value })}
-                    />
 
+                    />
                     <input
                         type="password"
                         placeholder="Senha"
                         onChange={e => this.setState({ password: e.target.value })}
                     />
-
-                    <button type="submit">Cadastrar</button>
+                    <button type="submit">Entrar</button>
                     <hr />
-                    <Link to="/">Fazer login</Link>
-
-
-
-
+                    <Link to="/signup">Criar conta grátis</Link>
 
                 </Form>
 
             </Container>
 
         );
-    }
+
+    };
+
 
 }
-export default withRouter(SignUp);
-
-
-
-
+export default withRouter(SignIn);
