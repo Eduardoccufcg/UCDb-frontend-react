@@ -4,6 +4,7 @@ import { isAuthenticated } from './services/auth';
 import SignUp from "./pages/SignUp";
 import { GlobalStyle } from './styles/global';
 import SignIn from './pages/SignIn';
+import Main from './pages/Main';
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
@@ -26,7 +27,7 @@ const Routes = () => (
       <Switch>
         <Route exact path="/" component={SignIn} />
         <Route path="/signup" component={SignUp}/>
-        <PrivateRoute path="/app" component={() => <h1>App</h1>} />
+        <PrivateRoute path="/app" component={Main} />
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
       <GlobalStyle></GlobalStyle>
