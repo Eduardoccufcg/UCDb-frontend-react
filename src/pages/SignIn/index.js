@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import api from "../../services/api";
 
-import {login,isAuthenticated} from "../../services/auth";
+import {login,isAuthenticated, getPayload} from "../../services/auth";
 
 import { Form, Container } from "./styles";
 
@@ -25,7 +25,7 @@ class SignIn extends Component {
             this.setState({ error: "Preencha todos os dados para se cadastrar" });
         } else {
 
-            await api.post("/api/v1/auth/login/", { email, password }).then((response) => {login(response.data.token) ;this.props.history.push("/app") })
+            await api.post("/api/v1/auth/login/", { email, password }).then((response) => {login(response.data.token);this.props.history.push("/app") })
                 .catch((error) => {
                     this.setState({ error: error.response.data.message })
             })

@@ -27,7 +27,7 @@ const Routes = () => (
       <Switch>
         <Route exact path="/" component={SignIn} />
         <Route path="/signup" component={SignUp}/>
-        <PrivateRoute path="/app" component={Main} />
+        <Route path="/app" component={Main} />
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
       <GlobalStyle></GlobalStyle>
