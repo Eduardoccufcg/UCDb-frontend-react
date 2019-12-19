@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     
     width: 100%;
-    height: 70px;
+    height: 60px;
     background: #00507c;
     color:black;
     display: flex;
@@ -11,7 +11,7 @@ export const Container = styled.div`
     background-color: #ffffff;
    
     img{
-        height: 70px;
+        height: 60px;
         weight: 50px;
     }
     
@@ -38,8 +38,9 @@ export const Container = styled.div`
         margin: 1.0rem;
         padding: 0.5rem
         color: black;
-        font-size: 17px;
+        font-size: 15px;
         cursor:pointer;
+        
     
        
     }
