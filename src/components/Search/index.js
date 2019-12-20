@@ -2,44 +2,55 @@ import React, { Component } from 'react';
 
 import { Link, withRouter } from "react-router-dom";
 import { isAuthenticated } from "../../services/auth";
-
+import api from "../../services/api";
 
 
 class Search extends Component {
 
     state = {
-        disciplinas:[]
+        disciplinas: []
     }
-    // getDisciplinas = async e=> {
-    //     e.preventDefault();
-        
-    //     const { email, password } = this.state;
-    //     if (!email || !password) {
-    //         this.setState({ error: "Preencha todos os dados para se cadastrar" });
-    //     } else {
-
-    //         await api.post("/api/v1/auth/login/", { email, password }).then((response) => {login(response.data.token);this.props.history.push("/app") })
-    //             .catch((error) => {
-    //                 this.setState({ error: error.response.data.message })
-    //         })
-    //     }
-
-
-    // };
-
-
+    getDisciplinas = async (substring) => {
+        await api.get(`/api/v1/profiles/search/?substring=${substring}`).then((response) => { this.setState({ disciplinas: response.data }) })
+            .catch((error) => {
+                this.setState({ error: error.response.data.message })
+            })
+    }
+    
     render() {
+        const { disciplinas } = this.state;
         return (
+
             <div id="search">
                 <input
-                
-                 type ="text"
-                 placeholder="ex. laboratório ..."
-                //  onChange={e => {this.getDisciplinas(e.target.value)}}
+
+                    type="text"
+                    placeholder="ex. laboratório ..."
+                    onChange={e => {
+                        if (e.target.value.length >= 3) {
+                            this.getDisciplinas(e.target.value);
+                        } else {
+                            this.setState({ disciplinas: [] })
+                        };
+
+                    }}
 
                 >
                 </input>
-                <h1>Search</h1>
+
+                <div className="profile-list">
+                    {disciplinas.length > 0 && disciplinas.map(disciplina => (
+                        <article key={disciplina.id}>
+
+                            <strong>{disciplina.id}</strong>
+                            <p>{disciplina.name}</p>
+
+                        </article>
+
+                    ))}
+
+
+                </div>
             </div>
         );
 
