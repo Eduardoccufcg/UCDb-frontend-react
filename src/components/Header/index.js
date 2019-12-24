@@ -14,12 +14,12 @@ class Header extends Component {
                 <div id="menu-header">
                    
                     {isAuthenticated() && <div>
-                        <Link to="/app">Inicio</Link>
-                        <Link to="/top10">TOP 10</Link>
+                        <Link to="/home">Inicio</Link>
+                        <Link to="/ranking">TOP 10</Link>
                         <Link onClick={logout} to="/">Sair</Link>
                     </div>}
                     {!isAuthenticated() && <div>
-                        <Link to="/app">Inicio</Link>
+                        <Link to="/home">Inicio</Link>
                         <Link to="/signup">Cadastrar</Link>
                         <Link to="/">Entrar</Link>
                     </div>}
