@@ -3,11 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
     
     width: 100%;
-    height: 60px;
+    height:20%;
     background: #00507c;
     color:black;
     display: flex;
     flex-direction: row;
+
+
     background-color: #ffffff;
    
     img{
@@ -25,6 +27,8 @@ export const Container = styled.div`
         
     }
     #menu-header{ 
+      
+        flex-direction: row;
         padding: 0;
         display: flex;
         justify-content: flex-end;

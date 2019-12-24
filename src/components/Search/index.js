@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import { Link, withRouter } from "react-router-dom";
-import { isAuthenticated } from "../../services/auth";
+// import { Link, withRouter } from "react-router-dom";
+// import { isAuthenticated } from "../../services/auth";
 import api from "../../services/api";
-
+import { Input } from 'semantic-ui-react'
+import { Container } from "./styles";
 
 class Search extends Component {
 
@@ -16,28 +17,35 @@ class Search extends Component {
                 this.setState({ error: error.response.data.message })
             })
     }
-    
+
     render() {
         const { disciplinas } = this.state;
         return (
 
-            <div id="search">
-                <input
+            <Container>
+                <div id="entrada">
 
-                    type="text"
-                    placeholder="ex. laboratório ..."
-                    onChange={e => {
-                        if (e.target.value.length >= 3) {
-                            this.getDisciplinas(e.target.value);
-                        } else {
-                            this.setState({ disciplinas: [] })
-                        };
+                   <h1>Buscar disciplinas da UFCG</h1>
+                    <input
+                        type="text"
+                        placeholder="ex. laboratório ..."
 
-                    }}
+                        onChange={e => {
+                            if (e.target.value.length >= 3) {
+                                this.getDisciplinas(e.target.value);
+                            } else {
+                                this.setState({ disciplinas: [] })
+                            };
 
-                >
-                </input>
+                        }}
+                    >
 
+                    </input>
+
+
+
+
+                </div>
                 <div className="profile-list">
                     {disciplinas.length > 0 && disciplinas.map(disciplina => (
                         <article key={disciplina.id}>
@@ -51,7 +59,7 @@ class Search extends Component {
 
 
                 </div>
-            </div>
+            </Container>
         );
 
     }

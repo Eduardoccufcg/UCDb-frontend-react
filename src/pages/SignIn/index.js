@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import api from "../../services/api";
 
-import {login,isAuthenticated, getPayload} from "../../services/auth";
+import {login} from "../../services/auth";
 
 import { Form, Container } from "./styles";
 
@@ -21,8 +21,10 @@ class SignIn extends Component {
     handleSignIn = async e => {
         e.preventDefault();
         const { email, password } = this.state;
+
         if (!email || !password) {
             this.setState({ error: "Preencha todos os dados para se cadastrar" });
+
         } else {
 
             await api.post("/api/v1/auth/login/", { email, password }).then((response) => {login(response.data.token);this.props.history.push("/app") })
@@ -30,8 +32,6 @@ class SignIn extends Component {
                     this.setState({ error: error.response.data.message })
             })
         }
-
-
     };
 
 
@@ -59,11 +59,7 @@ class SignIn extends Component {
                 </Form>
 
             </Container>
-
         );
-
     };
-
-
 }
 export default withRouter(SignIn);
