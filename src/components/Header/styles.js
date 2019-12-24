@@ -44,14 +44,14 @@ export const Container = styled.div`
         color: black;
         font-size: 15px;
         cursor:pointer;
-        
-    
        
     }
     a:hover{
-       color:#ADD8E6
-       
-       text-decoration: underline #ADD8E6; 
+        border: 1px solid #ddd;
+        border-radius: 9px;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
+        background-color: #fff;
+        transition: 0.0s;   
     }
 
 `;

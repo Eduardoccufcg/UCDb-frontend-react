@@ -39,24 +39,18 @@ class Search extends Component {
 
                         }}
                     >
-
                     </input>
-
-
-
-
                 </div>
-                <div className="profile-list">
+                <div id="profile-list">
+                    
                     {disciplinas.length > 0 && disciplinas.map(disciplina => (
-                        <article key={disciplina.id}>
-
+                        
+                        <article key={disciplina.id}>   
                             <strong>{disciplina.id}</strong>
                             <p>{disciplina.name}</p>
-
                         </article>
-
                     ))}
-
+                    
 
                 </div>
             </Container>

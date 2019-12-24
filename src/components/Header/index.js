@@ -12,12 +12,14 @@ class Header extends Component {
 
                 <div id="imagem-header"><img src={Logo} alt="UCDb logo" /></div>
                 <div id="menu-header">
-                    <Link to="/app">Inicio</Link>
+                   
                     {isAuthenticated() && <div>
+                        <Link to="/app">Inicio</Link>
                         <Link to="/top10">TOP 10</Link>
                         <Link onClick={logout} to="/">Sair</Link>
                     </div>}
                     {!isAuthenticated() && <div>
+                        <Link to="/app">Inicio</Link>
                         <Link to="/signup">Cadastrar</Link>
                         <Link to="/">Entrar</Link>
                     </div>}
