@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp";
 import { GlobalStyle } from './styles/global';
 import SignIn from './pages/SignIn';
 import Home from './pages/Home';
+import Ranking from './pages/Ranking';
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
@@ -28,7 +29,7 @@ const Routes = () => (
         <Route exact path="/" component={SignIn} />
         <Route path="/signup" component={SignUp}/>
         <Route path="/home" component={Home} />
-        <Route path="/ranking" component={Home} />
+        <PrivateRoute path="/ranking" component={Ranking} />
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
       <GlobalStyle></GlobalStyle>

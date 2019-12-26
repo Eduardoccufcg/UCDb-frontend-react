@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { Link, withRouter } from "react-router-dom";
 // import { isAuthenticated } from "../../services/auth";
 import api from "../../services/api";
-import { Input } from 'semantic-ui-react'
+
 import { Container } from "./styles";
 
 class Search extends Component {
