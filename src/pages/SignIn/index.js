@@ -27,7 +27,7 @@ class SignIn extends Component {
 
         } else {
 
-            await api.post("/api/v1/auth/login/", { email, password }).then((response) => {login(response.data.token);this.props.history.push("/app") })
+            await api.post("/api/v1/auth/login/", { email, password }).then((response) => {login(response.data.token);this.props.history.push("/home") })
                 .catch((error) => {
                     this.setState({ error: error.response.data.message })
             })
