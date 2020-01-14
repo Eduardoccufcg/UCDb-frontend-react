@@ -23,38 +23,46 @@ class Ranking extends Component {
         this.getPerfis();
 
     }
-
     render() {
 
         return (
 
             <Container>
                 <Header></Header>
-                <div>
-                    <h1>Ranking de Likes</h1>
-                    {this.state.ranking.rankingLikes !== undefined && this.state.ranking.rankingLikes.map(disciplina => (
-
-                        <article key={disciplina.id}>
-                            <strong>{disciplina.id}</strong>
-                            <p>{disciplina.name}</p>
-                            <p>{disciplina.num}</p>
-                        </article>
-                    ))}
+                <div id="info">
 
                 </div>
+                <div id="rankings">
 
-                <div>
-                    <h1>Ranking de Comentários</h1>
-                    {this.state.ranking.rankingComments !== undefined && this.state.ranking.rankingComments.map(disciplina => (
+                    <div id="ranking-likes">
+                        <h1>Ranking de Likes</h1>
+                        <hr></hr>
+                        {this.state.ranking.rankingLikes !== undefined && this.state.ranking.rankingLikes.map(disciplina => (
 
-                        <article key={disciplina.id}>
-                            <strong>{disciplina.id}</strong>
-                            <p>{disciplina.name}</p>
-                            <p>{disciplina.num}</p>
-                        </article>
-                    ))}
+                            <article key={disciplina.id}>
+                                <strong>{disciplina.id}</strong>
+                                <p>{disciplina.name}</p>
+                                <p>{disciplina.num}</p>
+                            </article>
+                        ))}
 
+                    </div>
+
+                    <div id="ranking-comment">
+                        <h1>Ranking de Comentários</h1>
+                        <hr></hr>
+                        {this.state.ranking.rankingComments !== undefined && this.state.ranking.rankingComments.map(disciplina => (
+
+                            <article key={disciplina.id}>
+                                <strong>{disciplina.id}</strong>
+                                <p>{disciplina.name}</p>
+                                <p>{disciplina.num}</p>
+                            </article>
+                        ))}
+
+                    </div>
                 </div>
+
             </Container>
         );
 
